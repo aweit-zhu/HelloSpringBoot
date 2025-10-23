@@ -31,13 +31,13 @@ jobs:
         run: mvn -B clean package -DskipTests
 
       # 5️⃣ 可選：上傳編譯後的 jar 檔作為 artifact
-      - name: Upload build artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: spring-boot-jar
-          path: target/*.jar
-      - name: Ensure Deployment Directory
-        run: mkdir -p /home/awei/HelloSpringBoot
+      #- name: Upload build artifact
+      #  uses: actions/upload-artifact@v4
+      #  with:
+      #    name: spring-boot-jar
+      #    path: target/*.jar
+      ##- name: Ensure Deployment Directory
+      #  run: mkdir -p /home/awei/HelloSpringBoot
 
       # 4️⃣ 複製 jar 到服務目錄
       - name: Deploy Jar
@@ -46,6 +46,10 @@ jobs:
       # 5️⃣ 重新啟動 systemd 服務
       - name: Restart Spring Boot Service
         run: sudo systemctl restart hellospringboot
+        #sudo systemctl daemon-reload
+        #sudo systemctl enable hellospringboot    # 開機自動啟動
+        #sudo systemctl start hellospringboot     # 啟動服務
+        #sudo systemctl status hellospringboot    # 查看狀態
 
       # 6️⃣ 檢查服務狀態（可選）
       - name: Check Service Status
