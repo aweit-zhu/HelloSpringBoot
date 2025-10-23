@@ -36,6 +36,8 @@ jobs:
         with:
           name: spring-boot-jar
           path: target/*.jar
+      - name: Ensure Deployment Directory
+        run: mkdir -p /home/awei/HelloSpringBoot
 
       # 4️⃣ 複製 jar 到服務目錄
       - name: Deploy Jar
