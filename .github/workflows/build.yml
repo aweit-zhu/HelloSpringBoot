@@ -37,15 +37,14 @@ jobs:
           name: spring-boot-jar
           path: target/*.jar
 
-      # 6️⃣ 自動執行 JAR
-      - name: Restart Spring Boot App
-        run: |
-            JAR=$(ls target/*.jar | head -n1)
-            echo "關閉舊的 Spring Boot..."
-            PID=$(ps -ef | grep "$JAR" | grep -v grep | awk '{print $2}')
-            if [ ! -z "$PID" ]; then
-              echo "終止 PID: $PID"
-              kill -9 $PID
-            fi
-            echo "啟動 $JAR..."
-            nohup java -jar $JAR 2>&1 | tee -a $(pwd)/app.log &
+      # 4️⃣ 複製 jar 到服務目錄
+      - name: Deploy Jar
+        run: cp target/*.jar /home/awei/HelloSpringBoot/
+
+      # 5️⃣ 重新啟動 systemd 服務
+      - name: Restart Spring Boot Service
+        run: sudo systemctl restart hellospringboot
+
+      # 6️⃣ 檢查服務狀態（可選）
+      - name: Check Service Status
+        run: sudo systemctl status hellospringboot --no-pager
