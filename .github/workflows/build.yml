@@ -49,7 +49,9 @@ jobs:
         #sudo systemctl daemon-reload
         #sudo systemctl enable hellospringboot    # 開機自動啟動
         #sudo systemctl start hellospringboot     # 啟動服務
+        #sudo systemctl stop hellospringboot     # 啟動服務
         #sudo systemctl status hellospringboot    # 查看狀態
+        #sudo journalctl -u hellospringboot -f #查看console
 
       # 6️⃣ 檢查服務狀態（可選）
       - name: Check Service Status

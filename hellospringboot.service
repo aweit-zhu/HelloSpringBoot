@@ -1,0 +1,14 @@
+[Unit]
+Description=HelloSpringBoot App
+After=network.target
+
+[Service]
+User=awei
+WorkingDirectory=/home/awei/HelloSpringBoot
+ExecStart=/usr/bin/java -jar /home/awei/HelloSpringBoot/HelloSpringBoot-0.0.1-SNAPSHOT.jar
+SuccessExitStatus=143
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
