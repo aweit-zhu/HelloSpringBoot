@@ -48,6 +48,7 @@ jobs:
         run: sudo systemctl restart hellospringboot
         #sudo systemctl daemon-reload
         #sudo systemctl enable hellospringboot    # 開機自動啟動
+        #sudo systemctl disable hellospringboot    # 關閉開機自動啟動
         #sudo systemctl start hellospringboot     # 啟動服務
         #sudo systemctl stop hellospringboot     # 啟動服務
         #sudo systemctl status hellospringboot    # 查看狀態
