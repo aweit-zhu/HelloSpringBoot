@@ -36,3 +36,9 @@ jobs:
         with:
           name: spring-boot-jar
           path: target/*.jar
+
+      # 6️⃣ 自動執行 JAR
+      - name: Run Spring Boot App
+        run: |
+          echo "啟動 Spring Boot 應用程式..."
+          nohup java -jar target/*.jar > app.log 2>&1 &
